@@ -5,35 +5,35 @@ import tech.arnav.pcbuilder.core.components.Peripheral
 import tech.arnav.pcbuilder.core.components.Tower
 import java.lang.IllegalStateException
 
-class PC {
-
-    lateinit var tower: Tower
-    lateinit var kvm: KVM
-    private lateinit var _peripherals: MutableList<Peripheral>
-    val peripherals: List<Peripheral> get() = _peripherals
+class PC private constructor(
+    val tower: Tower,
+    val kvm: KVM,
+    val peripherals: List<Peripheral>
+){
 
     class Builder {
-        private val pc = PC()
+        private var tower: Tower? = null
+        private var kvm: KVM? = null
+        private var peripherals = mutableListOf<Peripheral>()
 
         fun withTower(tower: Tower): Builder {
-            pc.tower = tower
+            this.tower = tower
             return this
         }
         fun withKVM(kvm: KVM): Builder {
-            pc.kvm = kvm
+            this.kvm = kvm
             return this
         }
 
         fun addPeripherals(vararg peripherals: Peripheral): Builder {
-            if (!pc::_peripherals.isInitialized) pc._peripherals = arrayListOf()
-            pc._peripherals.addAll(peripherals)
+            this.peripherals.addAll(peripherals)
             return this
         }
 
         fun build(): PC {
-            if (!pc::kvm.isInitialized) throw IllegalStateException("PC cannot be built without a KVM (Keyboard + Video + Mouse)")
-            if (!pc::tower.isInitialized) throw IllegalStateException("PC cannot be built without the CPU tower")
-            return pc;
+            if (tower == null) throw IllegalStateException("PC cannot be built without a KVM (Keyboard + Video + Mouse)")
+            if (kvm == null) throw IllegalStateException("PC cannot be built without the CPU tower")
+            return PC(tower!!, kvm!!, peripherals);
         }
 
     }
