@@ -1,8 +1,8 @@
 package tech.arnav.pcbuilder.core
 
-import tech.arnav.pcbuilder.core.components.KVM
-import tech.arnav.pcbuilder.core.components.Peripheral
-import tech.arnav.pcbuilder.core.components.Tower
+import tech.arnav.pcbuilder.core.systems.KVM
+import tech.arnav.pcbuilder.core.systems.Peripheral
+import tech.arnav.pcbuilder.core.systems.Tower
 import java.lang.IllegalStateException
 
 class PC private constructor(

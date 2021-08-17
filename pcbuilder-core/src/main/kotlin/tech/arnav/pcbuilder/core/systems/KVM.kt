@@ -1,4 +1,4 @@
-package tech.arnav.pcbuilder.core.components
+package tech.arnav.pcbuilder.core.systems
 
 import tech.arnav.pcbuilder.core.peripherals.Display
 import tech.arnav.pcbuilder.core.peripherals.Keyboard
