@@ -1,4 +1,3 @@
 package tech.arnav.pcbuilder.core.components
 
-class PSU {
-}
+class PSU

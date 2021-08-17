@@ -3,7 +3,6 @@ package tech.arnav.pcbuilder.core.systems
 import tech.arnav.pcbuilder.core.peripherals.Display
 import tech.arnav.pcbuilder.core.peripherals.Keyboard
 import tech.arnav.pcbuilder.core.peripherals.Mouse
-import java.lang.IllegalStateException
 
 class KVM private constructor(
     val keyboard: Keyboard,
