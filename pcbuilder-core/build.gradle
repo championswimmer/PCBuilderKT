@@ -1,3 +1,7 @@
 
 dependencies {
 }
+
+jar {
+    enabled = true
+}

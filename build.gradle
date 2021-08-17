@@ -2,6 +2,7 @@ buildscript {
     ext {
         kotlinVersion = "1.5.21"
         junitVersion = "5.7.2"
+        springVersion = "2.5.3"
     }
 
     repositories {
@@ -12,15 +13,26 @@ buildscript {
 
 plugins {
     id "org.jetbrains.kotlin.jvm" version "$kotlinVersion"
+    id 'org.springframework.boot' version "$springVersion"
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 }
 
 
 allprojects {
 
     apply plugin: "org.jetbrains.kotlin.jvm"
+    apply plugin: "io.spring.dependency-management"
 
     group "tech.arnav"
     version "0.1.0"
+
+    tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+        kotlinOptions {
+            jvmTarget = JavaVersion.VERSION_14
+            sourceCompatibility = JavaVersion.VERSION_14
+            targetCompatibility = JavaVersion.VERSION_14
+        }
+    }
 
     repositories {
         google()
@@ -33,11 +45,14 @@ allprojects {
         testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junitVersion"
     }
 
+    bootJar {
+        enabled = false
+    }
+
     test {
         useJUnitPlatform()
     }
 
 
 }
-
 
