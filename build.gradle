@@ -23,7 +23,7 @@ allprojects {
     apply plugin: "org.jetbrains.kotlin.jvm"
     apply plugin: "io.spring.dependency-management"
 
-    group "tech.arnav"
+    group "tech.arnav.pcbuilder"
     version "0.1.0"
 
     tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
