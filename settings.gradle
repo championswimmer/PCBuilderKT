@@ -1,0 +1,4 @@
+rootProject.name = 'PCBuilderKt'
+
+include ":pcbuilder-core"
+include ":pcbuilder-cli"
